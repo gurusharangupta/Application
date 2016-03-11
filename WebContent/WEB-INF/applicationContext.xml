@@ -11,19 +11,10 @@
  
   
         
-    <context:component-scan base-package="com.acc.messenger"/>
+    <context:component-scan base-package="com.got"/>
  
     <context:annotation-config/>
-   <!--  
-    <bean id="User" class="com.otv.model.User"/>
-     
-    User Service Declaration
-    <bean id="UserService" class="com.otv.user.service.UserService"/>
-     
-    User DAO Declaration
-    <bean id="UserDAO" class="com.otv.user.dao.UserDAO">
-        <property name="sessionFactory" ref="SessionFactory" />
-    </bean> -->
+ 
      
     <!-- Data Source Declaration -->
     <bean id="DataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
@@ -47,7 +38,7 @@
             </list>
         </property> -->
         <!-- Or just give this property which will scan all the model classes with @Entity -->
-          <property name="packagesToScan" value="com.accenture.model"/>
+          <property name="packagesToScan" value="com.got.model"/>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
