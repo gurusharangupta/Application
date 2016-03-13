@@ -1,6 +1,11 @@
-C:\Users\g.rajendra.gupta\GitProjects\Application\src\com\acc\controller\UserController.java
-C:\Users\g.rajendra.gupta\GitProjects\Application\src\com\acc\messenger\dao\DatabaseClass.java
-C:\Users\g.rajendra.gupta\GitProjects\Application\src\com\acc\messenger\service\MessageService.java
-C:\Users\g.rajendra.gupta\GitProjects\Application\src\com\acc\messenger\model\Profile.java
-C:\Users\g.rajendra.gupta\GitProjects\Application\src\com\acc\messenger\model\Message.java
-C:\Users\g.rajendra.gupta\GitProjects\Application\src\com\acc\messenger\resources\MessageResource.java
+/Users/apple/git/Application/src/com/got/serviceImpl/UserServiceImpl.java
+/Users/apple/git/Application/src/com/got/dao/UserDao.java
+/Users/apple/git/Application/src/com/got/service/NotesService.java
+/Users/apple/git/Application/src/com/got/daoImpl/UserDaoImpl.java
+/Users/apple/git/Application/src/com/got/daoImpl/NotesDaoImpl.java
+/Users/apple/git/Application/src/com/got/model/Notes.java
+/Users/apple/git/Application/src/com/got/service/UserService.java
+/Users/apple/git/Application/src/com/got/serviceImpl/NotesServiceImpl.java
+/Users/apple/git/Application/src/com/got/resource/NotesResource.java
+/Users/apple/git/Application/src/com/got/dao/NotesDao.java
+/Users/apple/git/Application/src/com/got/model/User.java

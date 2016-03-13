@@ -1,6 +1,9 @@
 package com.got.dao;
 
-public interface NotesDao {
+import com.got.model.Notes;
 
-	public boolean checkUser(String userName,String passWord);
+public interface NotesDao {
+	
+	public String addNote(Notes note);
+
 }
