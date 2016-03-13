@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.got.model.Notes;
+import com.got.model.User;
 import com.got.service.NotesService;
 import com.got.service.UserService;
 
@@ -38,12 +39,12 @@ public class NotesResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Notes> getMessages(@QueryParam("username")String userName,@QueryParam("password")String passWord){
 		
-		if(userService.checkUser(userName, passWord)){
+		//if(userService.checkUser(userName, passWord)){
 			
 			
 			
 			
-		}
+		//}
 		
 		
 		
@@ -56,10 +57,12 @@ public class NotesResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String addNotes(Notes note,@QueryParam("emailid")String userEmailId,@QueryParam("password")String passWord){
+	public String addNotes(Notes note){
 		
-		if(userService.checkUser(userEmailId, passWord)){
+		User user = userService.checkUser(note.getUser().getUserEmailId(), note.getUser().getPassWord());
+		if(user != null){
 			Date date = new Date();
+			note.setUser(user);
 			note.setCreateTime(date);
 			note.setUpdateTime(date);
 			return notesService.addNote(note);

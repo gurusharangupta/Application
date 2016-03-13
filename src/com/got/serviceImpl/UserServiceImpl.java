@@ -1,5 +1,7 @@
 package com.got.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,15 +28,13 @@ public class UserServiceImpl implements UserService {
 
 	}
 
-	public boolean checkUser(String userEmailId, String passWord) {
-		User user = userDao.checkUser(userEmailId);
+	public User checkUser(String userEmailId, String passWord) {
+		List<User> userList = userDao.checkUser(userEmailId);
+		if(!userList.isEmpty() && userList.get(0).getPassWord().equals(passWord)){
+			return userList.get(0);
+		}else {
 
-		if (user.getPassWord().equals(passWord)) {
-			return true;
-
-		} else {
-
-			return false;
+			return null;
 		}
 
 	}

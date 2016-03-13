@@ -1,16 +1,23 @@
 package com.got.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "UserDetails")
+@Table(name = "USER_DETAILS")
 public class User {
 
 	
@@ -18,6 +25,7 @@ public class User {
 	private String passWord;
 	private Date createTime;
 	private Date updateTime;
+	private List<Notes> userNotes = new ArrayList<Notes>();
 	
 	
 	@Id
@@ -41,6 +49,11 @@ public class User {
 		return updateTime;
 	}
 	
+	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="user")
+	
+	public List<Notes> getUserNotes() {
+		return userNotes;
+	}
 	
 	
 
@@ -58,6 +71,12 @@ public class User {
 	
 	public void setUserEmailId(String userEmailId) {
 		this.userEmailId = userEmailId;
+	}
+
+	
+
+	public void setUserNotes(List<Notes> userNotes) {
+		this.userNotes = userNotes;
 	}
 	
 	

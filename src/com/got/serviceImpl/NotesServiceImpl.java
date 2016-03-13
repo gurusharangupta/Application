@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.got.dao.NotesDao;
 import com.got.model.Notes;
+import com.got.model.User;
 import com.got.service.NotesService;
 
 @Service

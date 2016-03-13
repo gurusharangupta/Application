@@ -27,12 +27,14 @@ private SessionFactory sessionFactory;
 	}
 
 
-	public User checkUser(String userEmailId) {
+	public List<User> checkUser(String userEmailId) {
 		// TODO Auto-generated method stub
 		Query query =  getSessionFactory().getCurrentSession().createQuery("from User where userEmailId=?");
 		query.setString(0, userEmailId);
 		 List<User> list =  query.list();
-		return list.get(0);
+		 
+		return list;
+		 
 		
 			 
 		

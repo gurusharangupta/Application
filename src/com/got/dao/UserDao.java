@@ -1,9 +1,11 @@
 package com.got.dao;
 
+import java.util.List;
+
 import com.got.model.User;
 
 public interface UserDao {
 	
-	public User checkUser(String userEmailId); 
+	public List<User> checkUser(String userEmailId); 
 
 }
