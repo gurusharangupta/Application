@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -36,19 +37,19 @@ public class NotesResource {
 
 	
 	@GET
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Notes> getMessages(@QueryParam("username")String userName,@QueryParam("password")String passWord){
-		
-		//if(userService.checkUser(userName, passWord)){
+	public List<Notes> getNotesForUser(@HeaderParam("emailid") String emailId,@HeaderParam("password")String password){
+		List<Notes> notes = null;
+		User userObj = userService.checkUser(emailId, password);
+		if(userObj != null){
 			
-			
-			
-			
-		//}
-		
+			notes = notesService.getNotesForUser(userObj);
+		}
 		
 		
-		return null;
+		
+		return notes;
 		
 		
 		
@@ -59,10 +60,10 @@ public class NotesResource {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String addNotes(Notes note){
 		
-		User user = userService.checkUser(note.getUser().getUserEmailId(), note.getUser().getPassWord());
+		User user = userService.checkUser(note.getNotesUser().getUserEmailId(), note.getNotesUser().getPassWord());
 		if(user != null){
 			Date date = new Date();
-			note.setUser(user);
+			note.setNotesUser(user);
 			note.setCreateTime(date);
 			note.setUpdateTime(date);
 			return notesService.addNote(note);

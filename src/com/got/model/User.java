@@ -1,5 +1,6 @@
 package com.got.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,9 +20,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "USER_DETAILS")
-public class User {
+public class User implements Serializable{
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String userEmailId;
 	private String passWord;
 	private Date createTime;
@@ -49,7 +55,7 @@ public class User {
 		return updateTime;
 	}
 	
-	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="user")
+	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="notesUser",fetch=FetchType.EAGER)
 	
 	public List<Notes> getUserNotes() {
 		return userNotes;

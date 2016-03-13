@@ -1,5 +1,7 @@
 package com.got.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,11 +27,16 @@ public class NotesServiceImpl implements NotesService {
 
 		this.notesDao = notesDao;
 	}
-
+	@Override
 	public String addNote(Notes note) {
 
 		return notesDao.addNote(note);
 
+	}
+	
+	@Override
+	public List<Notes> getNotesForUser(User user) {
+		return notesDao.getNotesForUser(user);
 	}
 
 	public NotesDao getNotesDao() {
@@ -39,5 +46,7 @@ public class NotesServiceImpl implements NotesService {
 	public void setNotesDao(NotesDao notesDao) {
 		this.notesDao = notesDao;
 	}
+
+	
 
 }

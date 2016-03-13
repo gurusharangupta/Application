@@ -1,9 +1,11 @@
 package com.got.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,15 +15,19 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="NOTES")
-public class Notes {
+public class Notes implements Serializable{
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private long id;
 	private String title;
 	private String note;
 	private Date createTime;
 	private Date updateTime;
-	private User user;
+	private User notesUser;
 	
 	
 	@Id
@@ -50,11 +56,14 @@ public class Notes {
 		return updateTime;
 	}
 	
-	@ManyToOne
+	@ManyToOne(fetch= FetchType.EAGER)
 	@JoinColumn(name="USER_EMAIL_ID")
-	public User getUser() {
-		return user;
+	public User getNotesUser() {
+		return notesUser;
 	}
+
+	
+	
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
@@ -72,9 +81,11 @@ public class Notes {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-
-	public void setUser(User user) {
-		this.user = user;
+	
+	public void setNotesUser(User notesUser) {
+		this.notesUser = notesUser;
 	}
+
+	
 
 }
