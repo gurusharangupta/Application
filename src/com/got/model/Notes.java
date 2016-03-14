@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="NOTES")
 public class Notes implements Serializable{
@@ -56,8 +58,9 @@ public class Notes implements Serializable{
 		return updateTime;
 	}
 	
-	@ManyToOne(fetch= FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name="USER_EMAIL_ID")
+	@JsonBackReference
 	public User getNotesUser() {
 		return notesUser;
 	}

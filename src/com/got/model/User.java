@@ -18,6 +18,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "USER_DETAILS")
 public class User implements Serializable{
@@ -55,8 +57,8 @@ public class User implements Serializable{
 		return updateTime;
 	}
 	
-	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="notesUser",fetch=FetchType.EAGER)
-	
+	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="notesUser")
+	@JsonManagedReference
 	public List<Notes> getUserNotes() {
 		return userNotes;
 	}

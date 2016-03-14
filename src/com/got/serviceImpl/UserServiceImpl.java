@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.got.dao.UserDao;
+import com.got.exception.DataNotFoundException;
 import com.got.model.User;
 import com.got.service.UserService;
 
@@ -28,13 +29,13 @@ public class UserServiceImpl implements UserService {
 
 	}
 
-	public User checkUser(String userEmailId, String passWord) {
+	public User checkUser(String userEmailId, String passWord) throws DataNotFoundException {
 		List<User> userList = userDao.checkUser(userEmailId);
 		if(!userList.isEmpty() && userList.get(0).getPassWord().equals(passWord)){
 			return userList.get(0);
 		}else {
 
-			return null;
+			throw new DataNotFoundException("User Not Found");
 		}
 
 	}

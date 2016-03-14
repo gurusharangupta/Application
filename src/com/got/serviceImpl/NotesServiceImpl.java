@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.got.dao.NotesDao;
+import com.got.exception.DataNotFoundException;
 import com.got.model.Notes;
 import com.got.model.User;
 import com.got.service.NotesService;
@@ -35,7 +36,7 @@ public class NotesServiceImpl implements NotesService {
 	}
 	
 	@Override
-	public List<Notes> getNotesForUser(User user) {
+	public List<Notes> getNotesForUser(User user) throws DataNotFoundException{
 		return notesDao.getNotesForUser(user);
 	}
 
